@@ -1,0 +1,13 @@
+#!/bin/bash
+
+xcodePid=` ps -Ac | egrep -i Xcode | awk '{print $1}' | tr -d [:space:]; `
+
+
+if [ 1 -le ${#xcodePid} ]  
+	then 
+#	echo "Xcode running"
+	killall -KILL Xcode
+else	
+#	echo "not running"
+	dirname `xcode-select --print-path` | xargs dirname | xargs open
+fi
