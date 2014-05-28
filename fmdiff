@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echoerr() { echo "$@" 1>&2; }
+
+if [ $# -lt 2 ]; then
+	echoerr You must supply two files.
+	exit 1
+fi
+
+if [ ! -e "$1" ]; then
+	echoerr "Can't find $1";
+	exit 1
+fi	
+
+if [ ! -e "$2" ]; then
+	echoerr "Can't find $2";
+	exit 1
+fi	
+echo `xcode-select -p`/../Applications/FileMerge.app/Contents/MacOS/FileMerge -left $1 -right $2 
+
+`xcode-select -p`/../Applications/FileMerge.app/Contents/MacOS/FileMerge -left $1 -right $2 2>/dev/null
+
